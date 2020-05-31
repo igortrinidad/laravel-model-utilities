@@ -4,6 +4,7 @@ namespace IgorTrinidad\ModelUtilities;
 
 class ModelUtilities {
 
+
     /**
      * Return a formatted date
      */

@@ -3,9 +3,9 @@
 namespace IgorTrinidad\ModelUtilities\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
-trait Uuid
+trait UuidPrimary
 {
 
     /**
@@ -31,7 +31,7 @@ trait Uuid
     /**
      * Boot function from laravel.
      */
-    protected static function bootUuid()
+    protected static function bootUuidPrimary()
     {
 
         // Create a UUID to the model if it does not have one
@@ -40,7 +40,8 @@ trait Uuid
             $model->incrementing = false;
 
             if (!$model->getKey()) {
-                $model->{$model->getKeyName()} = (string)Str::uuid();
+
+                $model->{$model->getKeyName()} = (string)Uuid::uuid4();
             }
         });
 

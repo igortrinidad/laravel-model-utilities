@@ -188,7 +188,7 @@ class User extends Model {
 }
 ```
 
-This trait use [Laravel Str::uuid](https://laravel.com/docs/7.x/helpers#method-str-uuid) to generate the uuid
+This trait use [Ramsey Uuid::uuid4](https://github.com/ramsey/uuid) the same as [Laravel Str::uuid](https://laravel.com/docs/7.x/helpers#method-str-uuid) to generate the uuid
 
 #### Example of migration using Uuid in Laravel
 ```php
@@ -258,6 +258,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Changelog
 
-- v1.0.1
+- v1.0.2
   - Initial release.
   
