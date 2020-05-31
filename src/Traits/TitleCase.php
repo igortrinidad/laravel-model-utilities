@@ -3,6 +3,7 @@
 namespace IgorTrinidad\ModelUtilities\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use IgorTrinidad\ModelUtilities\ModelUtilities;
 
 trait TitleCase
 {
@@ -20,7 +21,7 @@ trait TitleCase
                 foreach($model->titleCases as $titleCaseColumn){
 
                     if(isset($model[$titleCaseColumn]) && !is_null($model[$titleCaseColumn])) {
-                        $model[$titleCaseColumn] = mb_convert_case($model[$titleCaseColumn],  MB_CASE_TITLE);
+                        $model[$titleCaseColumn] = ModelUtilities::titleCase($model[$titleCaseColumn]);
                     }
                 }
             }

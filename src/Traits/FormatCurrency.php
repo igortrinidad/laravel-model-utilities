@@ -3,7 +3,7 @@
 namespace IgorTrinidad\ModelUtilities\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use IgorTrinidad\ModelUtilities\ModelUtilities;
 
 trait FormatCurrency
 {
@@ -22,7 +22,7 @@ trait FormatCurrency
                     if(isset($model[$key]) && !is_null($model[$key])) {
                         $formattedColumnName = 'formatted_' . $key;
 
-                        $formattedValue = number_format($model[$key], $value['precision'], $value['decimal'], $value['thousand']);
+                        $formattedValue = ModelUtilities::formatCurrency($model[$key], $value['prefix'], $value['precision'], $value['decimal'], $value['thousand']);
 
                         $model[$formattedColumnName] = $value['prefix'] . $formattedValue;
                     }

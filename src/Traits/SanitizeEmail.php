@@ -3,6 +3,7 @@
 namespace IgorTrinidad\ModelUtilities\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use IgorTrinidad\ModelUtilities\ModelUtilities;
 
 trait SanitizeEmail
 {
@@ -19,7 +20,7 @@ trait SanitizeEmail
             if(isset($model->emailColumns) && gettype($model->emailColumns) == 'array') {
                 foreach($model->emailColumns as $emailColumn){
                     if(isset($model[$emailColumn]) && !is_null($model[$emailColumn])) {
-                        $model[$emailColumn] = mb_strtolower(filter_var($model[$emailColumn], FILTER_SANITIZE_EMAIL));
+                        $model[$emailColumn] = ModelUtilities::sanitizeEmail($model[$emailColumn]);
                     }
                 }
             }
