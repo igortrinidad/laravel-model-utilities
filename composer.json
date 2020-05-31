@@ -1,0 +1,24 @@
+{
+  "name": "igortrinidad/laravel-model-utilities",
+  "description": "A set of tools for Laravel Models",
+  "license": "MIT",
+  "authors": [
+    {
+      "name":  "Igor Trindade",
+      "email": "igortrindade.me@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "IgorTrinidad\\ModelUtilities\\" : "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "IgorTrinidad\\ModelUtilities\\ModelUtilitiesServiceProvider"
+      ]
+    }
+  }
+}
