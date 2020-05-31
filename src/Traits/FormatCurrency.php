@@ -22,9 +22,8 @@ trait FormatCurrency
                     if(isset($model[$key]) && !is_null($model[$key])) {
                         $formattedColumnName = 'formatted_' . $key;
 
-                        $formattedValue = ModelUtilities::formatCurrency($model[$key], $value['prefix'], $value['precision'], $value['decimal'], $value['thousand']);
+                        $model[$formattedColumnName] = ModelUtilities::formatCurrency($model[$key], $value['prefix'], $value['precision'], $value['decimal'], $value['thousand']);
 
-                        $model[$formattedColumnName] = $value['prefix'] . $formattedValue;
                     }
 
                 }
