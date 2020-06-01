@@ -11,26 +11,24 @@ $ composer require igortrinidad/laravel-model-utilities
 
 ## 2. Use the traits you need inside your models:
 
-Add traits you need to the model and set the fields that you want to format, see the full example:
+See the full example:
 ```php
 
 <?php
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-use IgorTrinidad\ModelUtilities\Traits\Uuid;
+use IgorTrinidad\ModelUtilities\Traits\UuidPrimary;
 use IgorTrinidad\ModelUtilities\Traits\TitleCase;
 use IgorTrinidad\ModelUtilities\Traits\SanitizeEmail;
 use IgorTrinidad\ModelUtilities\Traits\FormatDate;
 use IgorTrinidad\ModelUtilities\Traits\FormatCurrency;
 
-class User extends Authenticatable
+class Actor extends Model
 {
-    use Notifiable, Uuid, TitleCase, SanitizeEmail, FormatDate, FormatCurrency;
+    use  UuidPrimary, TitleCase, SanitizeEmail, FormatDate, FormatCurrency;
 
     /**
      * The attributes that are mass assignable.
@@ -40,9 +38,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
         'bday',
-        'value'
+        'payroll'
     ];
 
     /**
@@ -87,7 +84,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $currencyColumns = [
-        'value' => [
+        'payroll' => [
             'prefix' => 'US$ ',
             'decimal' => ',',
             'thousand' => '.',
