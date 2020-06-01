@@ -23,7 +23,7 @@ class ModelUtilitiesTest extends TestCase
 
         $unformattedDate = '1947-07-30';
 
-        $formattedDate = ModelUtilities::formatDate($unformattedDate, 'Y-m-d', 'd/m/Y');
+        $formattedDate = ModelUtilities::formatDate($unformattedDate);
 
         $this->assertEquals('30/07/1947', $formattedDate);
 
@@ -34,7 +34,7 @@ class ModelUtilitiesTest extends TestCase
 
         $formattedDate = '30/07/1947';
 
-        $unformattedDate = ModelUtilities::formatDate($formattedDate, 'd/m/Y', 'Y-m-d');
+        $unformattedDate = ModelUtilities::unformatDate($formattedDate);
 
         $this->assertEquals('1947-07-30', $unformattedDate);
 
@@ -47,9 +47,9 @@ class ModelUtilitiesTest extends TestCase
     {
         $unformattedValue = 145.92;
 
-        $formattedValue = ModelUtilities::formatCurrency($unformattedValue, 'R$ ', 2, ',', '.');
+        $formattedValue = ModelUtilities::formatCurrency($unformattedValue);
 
-        $this->assertEquals('R$ 145,92', $formattedValue);
+        $this->assertEquals('US$ 145,92', $formattedValue);
     }
 
     /**

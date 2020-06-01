@@ -85,7 +85,7 @@ class ModelUtilities {
         if($formatCurrencyConfig) {
             return $formatCurrencyConfig['prefix'] . number_format($value, $formatCurrencyConfig['precision'], $formatCurrencyConfig['decimal'], $formatCurrencyConfig['thousand']);
         } else {
-            return self::DEFAULT_CURRENCY_SETTINGS['prefix'] . number_format($value, self::DEFAULT_CURRENCY_SETTINGS['precision'], self::DEFAULT_CURRENCY_SETTINGS['decimal'], $currencySettings['thousand']);
+            return self::DEFAULT_CURRENCY_SETTINGS['prefix'] . number_format($value, self::DEFAULT_CURRENCY_SETTINGS['precision'], self::DEFAULT_CURRENCY_SETTINGS['decimal'], self::DEFAULT_CURRENCY_SETTINGS['thousand']);
         }
 
 

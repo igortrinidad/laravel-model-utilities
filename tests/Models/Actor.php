@@ -56,10 +56,7 @@ class Actor extends Model
      * @var array
      */
     protected $dateColumns = [
-        'date' => [
-            'unformatted' => 'Y-m-d',
-            'formatted' => 'd/m/Y'
-        ]
+        'date'
     ];
 
     /**
@@ -70,12 +67,7 @@ class Actor extends Model
      * @var array
      */
     protected $currencyColumns = [
-        'payroll' => [
-            'prefix' => 'US$ ',
-            'decimal' => ',',
-            'thousand' => '.',
-            'precision' => 2
-        ]
+        'payroll'
     ];
 
 }
