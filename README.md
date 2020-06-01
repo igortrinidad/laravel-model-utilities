@@ -9,6 +9,12 @@ Install package
 $ composer require igortrinidad/laravel-model-utilities
 ```
 
+Publish de config file: model-utilities.php
+
+```bash
+$ php artisan vendor:publish
+```
+
 ## 2. Use the traits you need inside your models:
 
 See the full example:
@@ -85,6 +91,7 @@ class Actor extends Model
      */
     protected $currencyColumns = [
         'payroll' => [
+            'attr_prefix' => 'formatted_',
             'prefix' => 'US$ ',
             'decimal' => ',',
             'thousand' => '.',
@@ -131,6 +138,15 @@ class Product extends Model {
         ]
     ];
 
+    /**
+     *
+     * Or use with global config settings config/model-utilities.php
+      * @var array
+     */
+    protected $currencyColumns = [
+        'value', 'discount
+    ];
+
 }
 ```
 ##### This trait doesn't change the value of the model on saving or updating, just create the attributes 'formatted_value' and 'formatted_discount' for the model after ::retrieved the model from the database
@@ -160,6 +176,15 @@ class User extends Model {
             'unformatted' => 'Y-m-d', //Default unformat date format
             'formatted' => 'd/m/Y' // Default formatted date format
         ]
+    ];
+
+    /**
+     *
+     * Or use with global config settings config/model-utilities.php
+      * @var array
+     */
+    protected $dateColumns = [
+        'bday'
     ];
 
 }
