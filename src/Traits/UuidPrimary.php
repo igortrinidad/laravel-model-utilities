@@ -40,17 +40,20 @@ trait UuidPrimary
             $model->incrementing = false;
 
             if (!$model->getKey()) {
-
                 $model->{$model->getKeyName()} = (string)Uuid::uuid4();
             }
         });
 
         // Set original if someone try to change UUID on update/save existing model
         static::saving(function (Model $model) {
-            $original_id = $model->getOriginal('id');
-            if (!is_null($original_id)) {
-                if ($original_id !== $model->id) {
-                    $model->id = $original_id;
+
+            $keyName = $model->getKeyName();
+
+            $originalPrimaryKey = $model->getOriginal($keyName);
+
+            if (!is_null($originalPrimaryKey)) {
+                if ($originalPrimaryKey !== $model->{$keyName}) {
+                    $model->{$keyName} = $originalPrimaryKey;
                 }
             }
         });

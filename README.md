@@ -37,6 +37,11 @@ class Actor extends Model
     use  UuidPrimary, TitleCase, SanitizeEmail, FormatDate, FormatCurrency;
 
     /**
+     * Here you can change the primary key of your model to the correspondent primaryKey of your table
+     */
+    protected $primaryKey = 'id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -272,6 +277,17 @@ ModelUtilities::sanitizeEmail($email);
 * [github.com/igortrinidad](https://github.com/igortrinidad)
 * [https://igortrindade.dev](https://igortrindade.dev)
 
+## Tests
+
+```bash
+
+git clone https://github.com/igortrinidad/laravel-model-utilities.git
+cd laravel-model-utilities
+composer install
+vendor/bin/phpunit --testdox
+
+```
+
 
 ## License
 
@@ -280,6 +296,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Changelog
 
-- v1.0.2
+- v1.2.1
   - Initial release.
+  - Added config file to code reuse for formatCurrency and formatDate methods
   

@@ -18,6 +18,9 @@ class ModelUtilitiesTest extends TestCase
         'payroll' => 15000000.00
     ];
 
+    /**
+    * @testdox It should format a date using the ModelUtilities::formatDate
+    */
     public function testFormatDate()
     {
 
@@ -29,6 +32,9 @@ class ModelUtilitiesTest extends TestCase
 
     }
 
+    /**
+    * @testdox It should unformat date using the ModelUtilities::unformatDate
+    */
     public function testUnformatDate()
     {
 
@@ -41,7 +47,7 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * testFormatCurrency
+    * @testdox It should format currency using ModelUtilities::formatCurrency
     */
     public function testFormatCurrency()
     {
@@ -53,10 +59,11 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * testSanitizeEmail
+    * @testdox It should sanitize email string
     */
     public function testSanitizeEmailFunction()
     {
+
         $unformattedEmail = 'TheEmail@DOmaiN.COM';
 
         $formatted = ModelUtilities::sanitizeEmail($unformattedEmail);
@@ -65,10 +72,11 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * testTitleCase
+    * @testdox It should Title Case the String
     */
     public function testTitleCase()
     {
+
         $unformattedString = 'igOR TRINDade';
 
         $formatted = ModelUtilities::titleCase($unformattedString);
@@ -77,7 +85,7 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * Test Uuid primary key column generation
+    * @testdox It should create a new Actor model and validate the UUID primary key
     */
     public function testUuidModelGeneration()
     {
@@ -89,7 +97,7 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * Test Formatted Currency Column
+    * @testdox It should format the currency of the Actor model using the FormatCurrency trait
     */
     public function testFormattedCurrencyTrait()
     {
@@ -102,7 +110,7 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * Test Sanitize email Trait
+    * @testdox It should sanitize the email string with SanitizeEmail trait
     */
     public function testSanitizeEmailTrait()
     {
@@ -115,7 +123,7 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * Test Trait Case Trait
+    * @testdox It should Title Case using the TitleCase trait
     */
     public function testTitleCaseTrait()
     {
@@ -128,7 +136,8 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
-    * Test Formatted Date Trait
+    * @testdox It should format a date column with FormatDate trait
+    *
     */
     public function testFormattedDateTrait()
     {

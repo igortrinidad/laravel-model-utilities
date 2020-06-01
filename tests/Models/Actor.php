@@ -17,6 +17,11 @@ class Actor extends Model
     public $timestamps = false;
 
     /**
+     * Here you can change the primary key of your model
+     */
+    protected $primaryKey = 'id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
