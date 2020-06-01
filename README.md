@@ -1,4 +1,4 @@
-# adonis-model-utilities
+# laravel-model-utilities
 A set of tools to use within your Laravel Models
 
 ## 1. Install
