@@ -11,7 +11,9 @@ class ModelUtilitiesServiceProvider extends ServiceProvider {
     */
     public function boot()
     {
-
+        $this->publishes([
+            __DIR__.'/config/model-utilities.php' => config_path('model-utilities.php'),
+        ]);
     }
 
     /**
