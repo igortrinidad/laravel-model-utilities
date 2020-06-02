@@ -130,12 +130,14 @@ class Product extends Model {
      */
     protected $currencyColumns = [
         'value' => [
+            'attr_prefix' => 'formatted_',
             'prefix' => 'US$ ',
             'decimal' => ',',
             'thousand' => '.',
             'precision' => 2
         ],
         'discount' => [
+            'attr_prefix' => 'formatted_',
             'prefix' => 'US$ ',
             'decimal' => ',',
             'thousand' => '.',
@@ -260,9 +262,9 @@ This output the formatted value: 'R$ 1.234,32';
 
 ```php
 
-ModelUtilities::formatCurrency($value, 'R$ ', 2, ',', '.');
+ModelUtilities::formatCurrency($value, $currencySettings);
 
-ModelUtilities::formatDate($date, 'Y-m-d', 'd/m/Y');
+ModelUtilities::formatDate($date, $dateSettings);
 
 ModelUtilities::titleCase($string);
 
