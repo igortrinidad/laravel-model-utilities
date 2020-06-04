@@ -12,7 +12,8 @@ class ModelUtilitiesTest extends TestCase
 {
 
     const TEST_ACTOR = [
-        'name' => 'arNOld SchwarzeNEgger',
+        'name' => 'arNOld',
+        'last_name' => 'SchwarzeNEgger',
         'email' => 'arnold@terMINATOR.com',
         'bday' => '30/07/1947',
         'payroll' => 15000000.00
@@ -85,6 +86,20 @@ class ModelUtilitiesTest extends TestCase
     }
 
     /**
+    * @testdox It should create and format the fullName using the FullName function
+    */
+    public function testFullName()
+    {
+
+        $first = 'igOR';
+        $lastName = 'TrINDADE';
+
+        $fullName = ModelUtilities::fullName($first, $lastName);
+
+        $this->assertEquals('Igor Trindade', $fullName);
+    }
+
+    /**
     * @testdox It should create a new Actor model and validate the UUID primary key
     */
     public function testUuidModelGeneration()
@@ -132,7 +147,20 @@ class ModelUtilitiesTest extends TestCase
 
         $actor = Actor::first();
 
-        $this->assertEquals('Arnold Schwarzenegger', $actor->name);
+        $this->assertEquals('Arnold', $actor->name);
+    }
+
+    /**
+    * @testdox It should create the full_name attribute using FullName Trait
+    */
+    public function testFullNameTrait()
+    {
+
+        Actor::create(self::TEST_ACTOR);
+
+        $actor = Actor::first();
+
+        $this->assertEquals('Arnold Schwarzenegger', $actor->full_name);
     }
 
     /**

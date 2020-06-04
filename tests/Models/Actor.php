@@ -9,10 +9,11 @@ use IgorTrinidad\ModelUtilities\Traits\TitleCase;
 use IgorTrinidad\ModelUtilities\Traits\SanitizeEmail;
 use IgorTrinidad\ModelUtilities\Traits\FormatDate;
 use IgorTrinidad\ModelUtilities\Traits\FormatCurrency;
+use IgorTrinidad\ModelUtilities\Traits\FullName;
 
 class Actor extends Model
 {
-    use UuidPrimary, TitleCase, SanitizeEmail, FormatDate, FormatCurrency;
+    use UuidPrimary, TitleCase, SanitizeEmail, FormatDate, FormatCurrency, FullName;
 
     public $timestamps = false;
 
@@ -28,6 +29,8 @@ class Actor extends Model
      */
     protected $fillable = [
         'name',
+        'last_name',
+        'full_name',
         'email',
         'bday',
         'payroll',
@@ -41,6 +44,23 @@ class Actor extends Model
      */
     protected $titleCases = [
         'name',
+        'last_name'
+    ];
+
+    /**
+     * The attribute of your model to create the fullName firstName . ' ' . lastName * applied title case
+     * Set the onlyGetter attribute if you dont have a column in your DB of the fullName attribute
+     * If the onlyGetter is set to true we just create the full_name attribute on model retrieved from db
+     *
+     * @var array
+     */
+    protected $fullNames = [
+        //This key should be the same as attribute or column name
+        'full_name' => [
+            'onlyGetter' => false,
+            'firstName' => 'name',
+            'lastName' => 'last_name'
+        ]
     ];
 
     /**

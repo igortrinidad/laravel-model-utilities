@@ -107,5 +107,13 @@ class ModelUtilities {
         return mb_convert_case($string,  MB_CASE_TITLE);
     }
 
+    /**
+    * fullName
+    */
+    public static function fullName(string $firstName, string $lastName)
+    {
+        return mb_convert_case($firstName,  MB_CASE_TITLE) . ' ' . mb_convert_case($lastName,  MB_CASE_TITLE);
+    }
+
 
 }

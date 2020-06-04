@@ -38,6 +38,8 @@ abstract class TestCase extends TestCaseBase
         DB::schema()->create('actors', function (Blueprint $table) {
             $table->uuid('id')->nullable();
             $table->string('name');
+            $table->string('last_name');
+            $table->string('full_name');
             $table->string('email')->unique();
             $table->date('bday');
             $table->decimal('payroll', 15, 2);
