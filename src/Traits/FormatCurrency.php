@@ -44,6 +44,38 @@ trait FormatCurrency
 
         });
 
+        /**
+         * Unset / remove virtual attributes created on model retrieved to avoid error on $model->update()
+         */
+        static::saving(function (Model $model) {
+
+            if(isset($model->currencyColumns) && gettype($model->currencyColumns) == 'array') {
+
+                $formatCurrencyConfig = config('model-utilities.currency');
+
+                foreach($model->currencyColumns as $key => $value){
+
+                    if(gettype($value) == 'array' && isset($model[$key]) && !is_null($model[$key])) {
+                        $formattedColumnName = $value['attr_prefix'] . $key;
+                        unset($model[$formattedColumnName]);
+
+                    } else if(gettype($value) == 'string' && isset($model[$value]) && !is_null($model[$value])) {
+
+                        if($formatCurrencyConfig) {
+                            $formattedColumnName = $formatCurrencyConfig['attr_prefix'] . $value;
+                            unset($model[$formattedColumnName]);
+                        } else {
+                            $formattedColumnName = ModelUtilities::DEFAULT_CURRENCY_SETTINGS['attr_prefix'] . $value;
+                            unset($model[$formattedColumnName]);
+                        }
+
+                    }
+
+                }
+            }
+
+        });
+
 
     }
 

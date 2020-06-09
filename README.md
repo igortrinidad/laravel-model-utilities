@@ -318,7 +318,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Changelog
 
-- v1.2.2
+- v1.2.3
   - Initial release.
   - Added config file to code reuse for formatCurrency and formatDate methods
   - Added FullName trait and function

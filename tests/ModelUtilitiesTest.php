@@ -177,4 +177,22 @@ class ModelUtilitiesTest extends TestCase
         $this->assertEquals('30/07/1947', $actor->bday);
     }
 
+    /**
+    * @testdox It should update model and check if the formatted value updated matches
+    */
+    public function testUpdateModel()
+    {
+        Actor::create(self::TEST_ACTOR);
+
+        $actor = Actor::first();
+
+        $update = $actor->update(['payroll' => 1000000]);
+
+        $this->assertTrue($update);
+
+        $actor = $actor->fresh();
+
+        $this->assertEquals('US$ 1.000.000,00', $actor->formatted_payroll);
+    }
+
 }
