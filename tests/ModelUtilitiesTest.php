@@ -6,6 +6,7 @@ use Ramsey\Uuid\Uuid;
 use IgorTrinidad\ModelUtilities\ModelUtilities;
 
 use IgorTrinidad\ModelUtilities\Tests\Models\Actor;
+use IgorTrinidad\ModelUtilities\Tests\Models\Product;
 
 
 class ModelUtilitiesTest extends TestCase
@@ -17,6 +18,11 @@ class ModelUtilitiesTest extends TestCase
         'email' => 'arnold@terMINATOR.com',
         'bday' => '30/07/1947',
         'payroll' => 15000000.00
+    ];
+
+    const TEST_PRODUCT = [
+        'name' => 'yeLLOW fun board',
+        'value' => 1200.99
     ];
 
     /**
@@ -83,6 +89,19 @@ class ModelUtilitiesTest extends TestCase
         $formatted = ModelUtilities::titleCase($unformattedString);
 
         $this->assertEquals('Igor Trindade', $formatted);
+    }
+
+    /**
+    * @testdox It should Upper case the first char of the String
+    */
+    public function testUpperCaseFirst()
+    {
+
+        $unformattedString = 'INDEPENDENT TRUCKS STD 149mm';
+
+        $formatted = ModelUtilities::upperCaseFirst($unformattedString);
+
+        $this->assertEquals('Independent trucks std 149mm', $formatted);
     }
 
     /**
@@ -193,6 +212,34 @@ class ModelUtilitiesTest extends TestCase
         $actor = $actor->fresh();
 
         $this->assertEquals('US$ 1.000.000,00', $actor->formatted_payroll);
+    }
+
+    /**
+    * @testdox It create a new Product Model and test the formatted value and upperCaseFirst
+    */
+    public function testCreateNewProduct()
+    {
+        Product::create(self::TEST_PRODUCT);
+
+        $product = Product::first();
+
+        $this->assertEquals('Yellow fun board', $product->name);
+        $this->assertEquals('R$ 1.200,99', $product->formatted_value);
+    }
+
+    /**
+    * @testdox It update the Product Model and test the formatted value and upperCaseFirst
+    */
+    public function testUpdateNewProduct()
+    {
+        Product::create(self::TEST_PRODUCT);
+
+        $product = tap(Product::first())->update(['name' => 'RED FUN BOARD', 'value' => 1199.99]);
+
+        $product = $product->fresh();
+
+        $this->assertEquals('Red fun board', $product->name);
+        $this->assertEquals('R$ 1.199,99', $product->formatted_value);
     }
 
 }

@@ -45,6 +45,12 @@ abstract class TestCase extends TestCaseBase
             $table->decimal('payroll', 15, 2);
         });
 
+        DB::schema()->create('products', function (Blueprint $table) {
+            $table->uuid('id')->nullable();
+            $table->string('name');
+            $table->decimal('value', 15, 2);
+        });
+
     }
 
 }

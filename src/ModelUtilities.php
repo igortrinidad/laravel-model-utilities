@@ -108,6 +108,14 @@ class ModelUtilities {
     }
 
     /**
+    * UpperCaseFirst
+    */
+    public static function upperCaseFirst(string $string)
+    {
+        return ucfirst(strtolower($string));
+    }
+
+    /**
     * fullName
     */
     public static function fullName(string $firstName, string $lastName)
