@@ -133,11 +133,23 @@ The key of the array $currencyColumns should be the same name of the column that
 ```php
 <?php
 
+
+use IgorTrinidad\ModelUtilities\Traits\UpperCaseFirst;
 use IgorTrinidad\ModelUtilities\Traits\FormatCurrency;
 
 class Product extends Model {
 
-    use FormatCurrency;
+    use UpperCaseFirst, FormatCurrency;
+
+    /**
+     * The columns that should be applied Upper Case for the first char
+     * This trait will format the columns that should be Upper before saving in db
+     *
+     * @var array
+     */
+    protected $upperCaseFirst = [
+        'name',
+    ];
 
     /**
      * The currency columns you want to format
@@ -286,6 +298,8 @@ ModelUtilities::formatDate($date, $dateSettings);
 
 ModelUtilities::titleCase($string);
 
+ModelUtilities::upperCaseFirst($string);
+
 ModelUtilities::fullName($first_name, $last_name);
 
 ModelUtilities::sanitizeEmail($email);
@@ -318,8 +332,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Changelog
 
-- v1.2.3
+- v1.2.4
   - Initial release.
   - Added config file to code reuse for formatCurrency and formatDate methods
   - Added FullName trait and function
+  - Added UpperCaseFirst trait and tests
   
